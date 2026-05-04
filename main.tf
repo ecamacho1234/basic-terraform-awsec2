@@ -54,6 +54,11 @@ resource "aws_instance" "web" {
   }
 }
 
+module "deploy_bucket" {
+  source = "./modulos/s3"
+  bucket_name = "modbucket74h2i29"
+}
+
 module "terraform_state_backend" {
   source = "cloudposse/tfstate-backend/aws"
   version     = "0.38.1"
@@ -65,4 +70,8 @@ module "terraform_state_backend" {
   terraform_backend_config_file_path = "."
   terraform_backend_config_file_name = "backend.tf"
   force_destroy                      = false
+}
+
+output "s3_arn" {
+  value = module.deploy_bucket.s3_bucket_arn
 }
