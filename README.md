@@ -1,3 +1,3 @@
-# Basic Template deploy aws ec2
+# Basic Template deploy aws Resources
 
 Infraestructur with Terraform

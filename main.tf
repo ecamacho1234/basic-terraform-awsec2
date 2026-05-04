@@ -53,3 +53,16 @@ resource "aws_instance" "web" {
     Name = "${var.project_name}-ec2"
   }
 }
+
+module "terraform_state_backend" {
+  source = "cloudposse/tfstate-backend/aws"
+  version     = "0.38.1"
+  namespace  = "portfolio75h5t5"
+  stage      = "prod"
+  name       = "terraformsa"
+  attributes = ["state"]
+
+  terraform_backend_config_file_path = "."
+  terraform_backend_config_file_name = "backend.tf"
+  force_destroy                      = false
+}
