@@ -3,8 +3,20 @@ module "vpc" {
   cidr_block = "10.10.0.0/16"
   name = "${var.project_name}-vpc"
 
+  # Public subnet
   public_subnet = "10.10.1.0/24"
   public_subnet_name = "${var.project_name}-public-subnet"
+
+  # Private subnet
+  private_subnet = "10.10.1.0/24"
+  private_subnet_name = "${var.project_name}-private_subnet"
+
+  # Internet Gateway
+  igw_name = "igw vpc oregon-${var.project_name}"
+
+  # Route table
+  cidr_route_table = "0.0.0.0/0"
+  public_crt_name = "public crt-${var.project_name}"
 }
 
 module "sg" {
